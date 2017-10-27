@@ -25,7 +25,8 @@ import cn.luoxi.common.packets.LoginReqBody;
  * @create 2017-10-26 18:44
  */
 public class ShowClientStarter {
-  public static Node serverNode = new Node("192.168.1.127", Const.PORT);
+  //ip地址端口号
+  private static Node serverNode = null;
   //编码、解码、消息处理
   public static ClientAioHandler aioHandler = new ShowClientAioHandler();
   //监听
@@ -45,10 +46,12 @@ public class ShowClientStarter {
     StringBuffer str = new StringBuffer();
     int i = 1;
     System.out.println("欢迎使用控制台聊天java小程序");
-//    System.out.println("请输入想要连接的服务器ip地址");
-//    String ip = sc.nextLine();
-//    System.out.println("请输入服务器端口号");
-//    String port = sc.nextLine();
+    //设置可以自定义连接服务器
+    System.out.println("请输入想要连接的服务器ip地址");
+    String ip = sc.nextLine();
+    System.out.println("请输入服务器端口号");
+    String port = sc.nextLine();
+    serverNode = new Node(ip, Integer.parseInt(port));
     aioClient = new AioClient(groupContext);
     clientChannelContext = aioClient.connect(serverNode);
     System.out.println("请输入用户名");
