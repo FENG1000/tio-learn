@@ -34,6 +34,7 @@ public class ShowServerStarter {
    * 启动程序
    */
   public static void main(String[] args) throws IOException {
+    //serverGroupContext.setHeartbeatTimeout(Const.TIMEOUT);
     aioServer.start(serverIp, serverPort);
   }
 }

@@ -65,7 +65,7 @@
 			<pattern>${conversion.pattern}</pattern>
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">   
-			<level>INFO</level>   
+			<level>warn</level>
 			<onMatch>ACCEPT</onMatch>   
 			<onMismatch>DENY</onMismatch>   
 		</filter> 
@@ -85,7 +85,7 @@
 			<pattern>${conversion.pattern}</pattern>
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">   
-			<level>debug</level>   
+			<level>warn</level>
 			<onMatch>ACCEPT</onMatch>   
 			<onMismatch>DENY</onMismatch>   
 		</filter> 

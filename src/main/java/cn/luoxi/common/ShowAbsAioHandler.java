@@ -1,12 +1,13 @@
 package cn.luoxi.common;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.tio.core.ChannelContext;
 import org.tio.core.GroupContext;
 import org.tio.core.exception.AioDecodeException;
 import org.tio.core.intf.AioHandler;
 import org.tio.core.intf.Packet;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 
 /**
@@ -16,6 +17,7 @@ import java.nio.ByteBuffer;
  * @create 2017-10-26 16:07
  */
 public abstract class ShowAbsAioHandler implements AioHandler {
+  private static Logger log = LoggerFactory.getLogger(ShowAbsAioHandler.class);
   /**
    * 解码：把接收到的ByteBuffer，解码成应用可以识别的业务消息包
    * 总的消息结构：消息头 + 消息体
@@ -53,11 +55,6 @@ public abstract class ShowAbsAioHandler implements AioHandler {
         byte[] dst = new byte[bodyLength];
         //取到消息内容
         byteBuffer.get(dst);
-        try {
-          System.out.println(new String(dst, Const.CHARSET) + "输出消息内容");
-        } catch (UnsupportedEncodingException e) {
-          e.printStackTrace();
-        }
         showPacket.setBody(dst);
       }
       return showPacket;

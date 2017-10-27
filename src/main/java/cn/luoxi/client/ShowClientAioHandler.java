@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import cn.luoxi.client.handler.LoginRespHandler;
+import cn.luoxi.client.handler.P2PRespHandler;
 import cn.luoxi.common.ShowAbsAioHandler;
 import cn.luoxi.common.ShowPacket;
 import cn.luoxi.common.Type;
@@ -24,6 +25,7 @@ public class ShowClientAioHandler extends ShowAbsAioHandler implements ClientAio
   private static Map<Byte, AbsShowBsHandler<?>> handlerMap = new HashMap<>();
   static {
     handlerMap.put(Type.LOGIN_RESP, new LoginRespHandler());
+    handlerMap.put(Type.P2P_REQ, new P2PRespHandler());
   }
   @Override
   public void handler(Packet packet, ChannelContext channelContext) throws Exception {

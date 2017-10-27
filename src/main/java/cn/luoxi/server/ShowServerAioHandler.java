@@ -14,6 +14,7 @@ import cn.luoxi.common.ShowPacket;
 import cn.luoxi.common.Type;
 import cn.luoxi.common.intf.AbsShowBsHandler;
 import cn.luoxi.server.handler.LoginReqHandler;
+import cn.luoxi.server.handler.P2PReqHandler;
 
 
 /**
@@ -26,6 +27,7 @@ public class ShowServerAioHandler extends ShowAbsAioHandler implements ServerAio
   private static Map<Byte, AbsShowBsHandler<?>> handlerMap = new HashMap<>();
   static {
     handlerMap.put(Type.LOGIN_REQ, new LoginReqHandler());
+    handlerMap.put(Type.P2P_REQ, new P2PReqHandler());
   }
   @Override
   public void handler(Packet packet, ChannelContext channelContext) throws Exception {
