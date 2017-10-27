@@ -65,6 +65,5 @@ public class ShowClientStarter {
     showPacket.setBody(Json.toJson(loginReqBody).getBytes(Const.CHARSET));
     showPacket.setType(Type.LOGIN_REQ);
     Aio.send(clientChannelContext, showPacket);
-
   }
 }
