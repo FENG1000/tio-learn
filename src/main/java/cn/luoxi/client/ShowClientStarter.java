@@ -85,11 +85,7 @@ public class ShowClientStarter {
     String ip = sc.nextLine();
     log.info("请输入服务器端口号");
     String port = sc.nextLine();
-
     serverNode = new Node(ip, Integer.parseInt(port));
-    aioClient = new AioClient(groupContext);
-    clientChannelContext = aioClient.connect(serverNode);
-
     log.info("连接服务器成功");
   }
 
