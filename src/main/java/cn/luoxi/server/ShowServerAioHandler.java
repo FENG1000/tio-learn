@@ -23,7 +23,7 @@ import cn.luoxi.server.handler.LoginReqHandler;
 **/
 public class ShowServerAioHandler extends ShowAbsAioHandler implements ServerAioHandler {
   private static Logger log = LoggerFactory.getLogger(ShowServerAioHandler.class);
-  private static Map<Byte, AbsShowBsHandler<?>> handlerMap = new HashMap<Byte, AbsShowBsHandler<?>>();
+  private static Map<Byte, AbsShowBsHandler<?>> handlerMap = new HashMap<>();
   static {
     handlerMap.put(Type.LOGIN_REQ, new LoginReqHandler());
   }

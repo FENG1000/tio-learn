@@ -6,6 +6,7 @@ import org.tio.client.intf.ClientAioHandler;
 import org.tio.core.ChannelContext;
 import org.tio.core.intf.Packet;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import cn.luoxi.client.handler.LoginRespHandler;
