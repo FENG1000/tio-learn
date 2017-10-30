@@ -8,7 +8,8 @@ package cn.luoxi.common;
 public class ShowSessionContext {
   private String token = null;
   private String userId = null;
-
+  public ShowSessionContext() {
+  }
   public String getToken() {
     return token;
   }

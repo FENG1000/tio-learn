@@ -23,6 +23,8 @@ public abstract class ShowAbsAioHandler implements AioHandler {
    * 总的消息结构：消息头 + 消息体
    * 消息头的结构：4个字节，存储消息体的长度
    * 消息体的结构：对象的json串的byte[]
+   * 根据ByteBuffer解码成业务需要的Packet对象.
+   * 如果收到的数据不全，导致解码失败，请返回null，在下次消息来时框架层会自动续上前面的收到的数据
    */
   @Override
   public Packet decode(ByteBuffer byteBuffer, ChannelContext channelContext) throws AioDecodeException {

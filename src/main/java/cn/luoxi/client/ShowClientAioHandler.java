@@ -27,17 +27,19 @@ public class ShowClientAioHandler extends ShowAbsAioHandler implements ClientAio
     handlerMap.put(Type.LOGIN_RESP, new LoginRespHandler());
     handlerMap.put(Type.P2P_REQ, new P2PRespHandler());
   }
+  private static ShowPacket heartbeatPacket = new ShowPacket(Type.HEART_BEAT_REQ, null);
   @Override
   public void handler(Packet packet, ChannelContext channelContext) throws Exception {
     ShowPacket showPacket = (ShowPacket) packet;
     Byte type = showPacket.getType();
     AbsShowBsHandler<?> showBsHandler = handlerMap.get(type);
     showBsHandler.handler(showPacket, channelContext);
+    return;
   }
 
   //此方法如果返回null，框架层面则不会发心跳；如果返回非null，框架层面会定时发本方法返回的消息包
   @Override
   public Packet heartbeatPacket() {
-    return new ShowPacket();
+    return heartbeatPacket;
   }
 }

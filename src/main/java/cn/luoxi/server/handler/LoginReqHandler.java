@@ -24,6 +24,9 @@ import cn.luoxi.common.packets.LoginRespBody;
  */
 public class LoginReqHandler extends AbsShowBsHandler<LoginReqBody> {
   private static Logger log = LoggerFactory.getLogger(LoginReqHandler.class);
+  //JDK在concurrent包里提供了一些线程安全的基本数据类型的实现，比如 Long型
+  // 对应的concurrent包的类是AtomicLong。
+  AtomicLong tokenSeq = new AtomicLong();
   @Override
   public Class<LoginReqBody> bodyClass() {
     return LoginReqBody.class;
@@ -54,9 +57,6 @@ public class LoginReqHandler extends AbsShowBsHandler<LoginReqBody> {
     Aio.send(channelContext, showPacket);
     return null;
   }
-  //JDK在concurrent包里提供了一些线程安全的基本数据类型的实现，比如 Long型
-  // 对应的concurrent包的类是AtomicLong。
-  AtomicLong tokenSeq = new AtomicLong();
   //在线程安全的情况下创建token
   private String newToken() {
     return System.currentTimeMillis() + "_" + tokenSeq.incrementAndGet();

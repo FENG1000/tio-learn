@@ -14,6 +14,12 @@ public class ShowPacket extends Packet {
     super();
   }
 
+  public ShowPacket(byte type, byte[] body) {
+    super();
+    this.type = type;
+    this.body = body;
+  }
+
   public byte getType() {
     return type;
   }

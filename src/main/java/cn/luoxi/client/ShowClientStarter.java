@@ -58,26 +58,33 @@ public class ShowClientStarter {
       int i = 1;
       sb.append("欢迎使用控制台聊天工具\n");
       sb.append(i++ + "、登录\n");
-      sb.append(i++ + "、进入聊天界面\n");
+      sb.append(i++ + "、进入聊天界面");
       log.info(sb.toString());
       //根据输入的值不同进入不同的功能
       String type = sc.nextLine();
-      switch (type) {
-        case "1":
-          //用户名密码登录接口
-          login();
-          break;
-        case "2":
-          //聊天功能
-          write();
-          break;
-      }
+      select(type);
     }catch (Exception e) {
       log.error(e.getMessage());
     }
 
   }
-
+  //选项
+  public static void select(String type) throws Exception {
+    switch (type) {
+      case "1":
+        //用户名密码登录接口
+        login();
+        break;
+      case "2":
+        //聊天功能
+        write();
+        break;
+      default:
+        String tp = sc.nextLine();
+        select(tp);
+        break;
+    }
+  }
   //自定义服务器地址和端口
   public static void node() throws Exception{
     //设置可以自定义连接服务器
@@ -114,11 +121,12 @@ public class ShowClientStarter {
   public static void write() throws Exception {
     Thread.sleep(500);
     while (true) {
-      log.info("消息格式：用户名 消息内容，对出聊天请输入'T+'");
+      log.info("消息格式：用户名 消息内容，退出聊天请输入'T+'");
       String write = sc.nextLine();
       String toName = StringUtils.substringBefore(write, " ");
       if ("T+".equals(toName)) {
-        log.info("感谢使用");
+        log.info("退出聊天");
+        read();
         break;
       }
       String  text = StringUtils.substringAfter(write, " ");
